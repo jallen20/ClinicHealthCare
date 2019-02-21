@@ -1,0 +1,39 @@
+﻿<ContentDialog
+    x:Class="ClinicHealthcareSystem.Views.UpdatePatientInfoContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClinicHealthcareSystem.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ClinicHealthcareSystem.ViewModels"
+    mc:Ignorable="d"
+    Title="Edit Patient Information"
+    PrimaryButtonText="Update"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Canvas HorizontalAlignment="Center" Height="385" VerticalAlignment="Top" Width="515">
+        <TextBlock Canvas.Left="12" Canvas.Top="69" Text="First Name:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="273" Canvas.Top="70" Text="Last Name:" TextWrapping="Wrap" Margin="0,0,0,0"/>
+        <TextBlock Canvas.Left="15" Canvas.Top="141" Text="Date of Birth:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="41" Canvas.Top="204" Text="Sex:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="280" Canvas.Top="205" Text="Phone:" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="18" Canvas.Top="278" Text="Address:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="52" Canvas.Top="343" Text="City:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="207" Canvas.Top="343" Text="State:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="355" Canvas.Top="339" Text="Zip:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="fname_TextBox" MaxLength="50" Canvas.Left="88" Canvas.Top="66" Text="" Margin="0,0,0,0" Width="159" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="lname_TextBox" MaxLength="50" Canvas.Left="348" Canvas.Top="65" Text="" Margin="0,0,0,0" Width="154"/>
+        <TextBox x:Name="phone_TextBox" MaxLength="10" InputScope="Number" Canvas.Left="334" Canvas.Top="198" Text="" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="156"/>
+        <TextBox x:Name="address_TextBox" MaxLength="100" Canvas.Left="97" Canvas.Top="272" Text="" Margin="0,0,0,0" Width="318"/>
+        <TextBox x:Name="city_TextBox" MaxLength="100" Canvas.Left="87" Canvas.Top="335" Text=""/>
+        <TextBox x:Name="zip_TextBox" MaxLength="5" InputScope="Number" Canvas.Left="388" Canvas.Top="335" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <DatePicker x:Name="dob_DatePicker" HorizontalAlignment="Left" Canvas.Left="114" Canvas.Top="136" VerticalAlignment="Top"/>
+        <ComboBox x:Name="state_ComboBox" HorizontalAlignment="Left" SelectedItem="" Canvas.Left="249" Canvas.Top="336" VerticalAlignment="Top"/>
+        <ComboBox x:Name="sex_ComboBox" HorizontalAlignment="Left" SelectedItem="" Canvas.Left="82" Canvas.Top="197" VerticalAlignment="Center" Margin="0,0,0,0" Width="123"/>
+        <TextBlock x:Name="errormessage_TextBlock" Foreground="Red" Canvas.Left="350" Canvas.Top="20" Text="TextBlock" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="31" Margin="0,0,0,0" Canvas.Top="24" Text="SSN:" TextWrapping="Wrap"/>
+        <TextBox x:Name="ssn_TextBox" MaxLength="9" InputScope="Number" Canvas.Left="71" Canvas.Top="20" Text="" Margin="0,0,0,0" Width="168"/>
+    </Canvas>
+</ContentDialog>

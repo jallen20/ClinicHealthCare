@@ -1,0 +1,173 @@
+﻿<Page
+    x:Class="ClinicHealthcareSystem.Views.AdminSearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClinicHealthcareSystem.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:ClinicHealthcareSystem.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel >
+        <RelativePanel.Background>
+            <LinearGradientBrush EndPoint="0.961,0.951" StartPoint="0.08,-0.073">
+                <GradientStop Color="#354149" Offset="0.104"/>
+                <GradientStop Color="#697b86" Offset="0.843"/>
+            </LinearGradientBrush>
+        </RelativePanel.Background>
+        <ProgressRing  x:Name="ring" Height="100" Width="700"                               
+                      Foreground="#edf1f4"
+                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                  RelativePanel.AlignVerticalCenterWithPanel="True"
+                    
+                      BorderThickness="0"/>
+        <Rectangle x:Name="BottomLine" Height="5" Fill="#edf1f4" Opacity=".45" Margin="0 50 0 0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+        <Button x:Name="btnLogin" Style="{StaticResource BorderlessButton}" Content="Log Out"   RelativePanel.AlignRightWithPanel="True"  VerticalAlignment="Center" Foreground="#edf1f4"  Height="44" Width="102" FontFamily="Segoe UI" HorizontalAlignment="Center" Margin="0,0,0,0" />
+        <Rectangle x:Name="sidePanel" Fill="#354149" HorizontalAlignment="Left" Height="1400" Width="250"  VerticalAlignment="Stretch"   />
+        <Button x:Name="btnBack" Style="{StaticResource BorderlessButton}" Margin="10,10" Opacity=".75"  RelativePanel.AlignLeftWithPanel="True"  RenderTransformOrigin="0.5,0.5" >
+
+            <StackPanel>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE72B;" Foreground="#edf1f4" FontSize="35"/>
+            </StackPanel>
+        </Button>
+
+
+        <Image x:Name="profilePic" Source="/Assets/res/Background.png"  RelativePanel.Below="btnBack" Margin="15,75,0,0" Height="146" Width="146"/>
+        <TextBlock x:Name="txtDate"  Text="Date"   RelativePanel.RightOf="sidePanel"  Foreground="#edf1f4" Margin="10,30"/>
+        <TextBlock x:Name="loggedIn" Text="Logged In User:" RelativePanel.Below="btnBack" Margin="15,10,0,0" Foreground="#edf1f4"/>
+        <TextBlock  x:Name="firstNameLabel" Text="First Name:" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="profilePic" />
+        <TextBlock x:Name="txtFirstName"  Text="First Name" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="profilePic" RelativePanel.RightOf="firstNameLabel"/>
+        <TextBlock  x:Name="lastNameLabel" Text="Last Name:" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="firstNameLabel" />
+        <TextBlock x:Name="txtLastName"  Text="LastName" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="txtFirstName" RelativePanel.RightOf="lastNameLabel"/>
+        <TextBlock x:Name="roleLabel"  Text="Role:" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="lastNameLabel" />
+        <TextBlock x:Name="txtRole"  Text="Role" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="txtLastName" RelativePanel.RightOf="roleLabel" />
+        <TextBlock x:Name="idLabel"  Text="ID:" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="roleLabel" />
+        <TextBlock x:Name="txtId"  Text="Id" Foreground="#edf1f4" Margin="15,20,0,0" RelativePanel.Below="txtRole" RelativePanel.RightOf="idLabel" />
+        <RelativePanel x:Name="a" RelativePanel.RightOf="sidePanel" RelativePanel.AlignRightWithPanel="True" Margin="30,40,0,0" RelativePanel.Below="BottomLine">
+            
+            <ScrollViewer RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled">
+                <RelativePanel>
+
+            <RelativePanel x:Name="appnts"  >
+            <TextBlock Text="Start Date:" Foreground="#66FFFFFF" x:Name="startLabel"/>
+            <DatePicker x:Name="startDate" RelativePanel.RightOf="startLabel" Margin="20,0,0,0"/>
+            <TextBlock Text="End Date:" Foreground="#66FFFFFF" RelativePanel.RightOf="startDate" Margin="20,0,0,0" x:Name="endLabel"/>
+            <DatePicker x:Name="endDate" RelativePanel.RightOf="endLabel" Margin="20,0,0,0"/>
+            <Button Click="search" x:Name="se" Style="{StaticResource BorderlessButton}" RelativePanel.RightOf="endDate" RelativePanel.AlignVerticalCenterWith="endDate" Margin="15,0,0,0">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;" Foreground="#edf1f4"/>
+                        </Button>
+            
+                <TextBlock x:Name="apps" RelativePanel.Below="endDate" Margin="0,40,0,0" RelativePanel.AlignLeftWithPanel="True" Foreground="#66FFFFFF" Text="APPOINTMENTS" FontSize="22"/>
+
+                        <ListView RelativePanel.Below="apps" Style="{StaticResource StickyHeaderListView}"  x:Name="appointments_ListView" ItemsSource="{Binding Appointments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsItemClickEnabled="True" ItemClick="viewAppointment" HorizontalAlignment="Center" Height="290" Width="961">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" Background="#66FFFFFF">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Doctor" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Date" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="Description" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Appointment">
+                    <Grid Height="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#edf1f4" Text="{Binding AppointmentId}" />
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#edf1f4" Text="{Binding Doctor.FullName}" />
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#edf1f4" Text="{Binding Date}"/>
+                        <TextBlock Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#edf1f4" Text="{Binding Description}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RelativePanel>
+
+    <RelativePanel x:Name="checks" RelativePanel.Below="appnts" RelativePanel.AlignLeftWithPanel="True" Margin="0,50,0,0">
+        <TextBlock x:Name="checLabel"  Text="CHECK-UPS" Foreground="#66FFFFFF" FontSize="22"/>
+
+                        <ListView x:Name="checkups_ListView" Style="{StaticResource StickyHeaderListView}" RelativePanel.Below="checLabel" IsItemClickEnabled="True" ItemClick="viewCheckup" ItemsSource="{Binding Checkups,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="332" Width="987">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" Background="#66FFFFFF">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Nurse" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Date" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:RoutineCheck">
+                    <Grid Height="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="#edf1f4" VerticalAlignment="Center" Text="{Binding Appointment.AppointmentId}" />
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="#edf1f4" VerticalAlignment="Center" Text="{Binding Nurse.FullName}" />
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="#edf1f4" VerticalAlignment="Center" Text="{Binding Date}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RelativePanel>
+
+    <RelativePanel x:Name="labs" RelativePanel.Below="checks" RelativePanel.AlignLeftWithPanel="True" Margin="0,50,0,0">
+        <TextBlock x:Name="ls" HorizontalAlignment="Left"  Text="LAB TESTS" Foreground="#66FFFFFF" FontSize="22"/>
+
+                        <ListView x:Name="labtests_ListView" Style="{StaticResource StickyHeaderListView}"  RelativePanel.Below="ls" ItemsSource="{Binding LabTestsV2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedLabTest,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemClick="labTest_ItemClick"  Height="410"  Width="962">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" Background="#66FFFFFF">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Order Date" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Due Date" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:PatientLabTests">
+                    <Grid Height="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" Foreground="#edf1f4" VerticalAlignment="Center" Text="{Binding OrderId}" />
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Foreground="#edf1f4" VerticalAlignment="Center" Text="{Binding Order_Date}" />
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Foreground="#edf1f4" VerticalAlignment="Center" Text="{Binding Due_Date}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RelativePanel>
+                </RelativePanel>
+
+            </ScrollViewer>
+        </RelativePanel>
+    </RelativePanel>
+</Page>

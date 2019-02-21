@@ -1,0 +1,39 @@
+﻿<ContentDialog
+    x:Class="ClinicHealthcareSystem.Views.ViewPatientInfoContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ClinicHealthcareSystem.ViewModels"
+    mc:Ignorable="d"
+    Title="TITLE"
+    PrimaryButtonText="Update"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick" MaxWidth="1000" MaxHeight="1000" Width="529.5" Height="364"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Canvas HorizontalAlignment="Center" Height="221" Margin="0,10,0,0" VerticalAlignment="Top" Width="524" RenderTransformOrigin="0.51,0.495">
+        <TextBlock Canvas.Left="35" Canvas.Top="10" Text="First Name:" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="35" Canvas.Top="48" Text="SSN:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="35" Canvas.Top="88" Text="Sex:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="35" Canvas.Top="127" Text="Address:" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="250" Canvas.Top="10" Text="Last Name:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="250" Canvas.Top="48" Text="Date of Birth:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="250" Canvas.Top="88" Text="Phone:" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="35" Canvas.Top="161" Text="City:" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock Canvas.Left="200" Canvas.Top="161" Text="State:" TextWrapping="Wrap"/>
+        <TextBlock Canvas.Left="352" Canvas.Top="161" Text="Zip:" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="fname_TextBlock" Canvas.Left="121" Canvas.Top="11" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="lname_TextBlock" Canvas.Left="333" Canvas.Top="13" Text="" TextWrapping="Wrap"/>
+        <TextBlock x:Name="ssn_TextBlock" Canvas.Left="79" Canvas.Top="47" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="sex_TextBlock" Canvas.Left="73" Canvas.Top="89" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="address_TextBlock" Canvas.Left="101" Canvas.Top="129" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="phone_TextBlock" Canvas.Left="305" Canvas.Top="89" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="city_TextBlock" Canvas.Left="74" Canvas.Top="163" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="state_TextBlock" Canvas.Left="249" Canvas.Top="163" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="zip_TextBlock" Canvas.Left="389" Canvas.Top="163" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="dob_TextBlock" Canvas.Left="344" Canvas.Top="51" Text="" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Canvas>
+
+
+</ContentDialog>

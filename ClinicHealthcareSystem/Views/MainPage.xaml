@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="ClinicHealthcareSystem.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClinicHealthcareSystem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <RelativePanel>
+        <RelativePanel.Background>
+            <LinearGradientBrush EndPoint="1.055,1.001" StartPoint="0.013,0.024">
+                <GradientStop Color="#354149" Offset="0.273"/>
+                <GradientStop Color="#697b86" Offset="0.779"/>
+            </LinearGradientBrush>
+        </RelativePanel.Background>
+        <ProgressRing  x:Name="ring" Height="100" Width="100"                               
+                       Foreground="#edf1f4"
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                    
+                       BorderThickness="0"/>
+        <TextBox  Style="{StaticResource BottomBorder}" x:Name="txtUserName" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"  Height="31"  PlaceholderText="ID"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#66FFFFFF" BorderBrush="#66FFFFFF"  Width="489" FontFamily="Segoe UI"/>
+        <PasswordBox Style="{StaticResource BottomBorderPassword}"   x:Name="txtPassWord" Margin="0,30,0,0" RelativePanel.Below="txtUserName" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="31" PlaceholderText="Password"  Foreground="#66FFFFFF" BorderBrush="#66FFFFFF" Width="489" FontFamily="Segoe UI"/>
+        <Button Style="{StaticResource RoundButton}" x:Name="btnLogin" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="txtPassWord"  BorderThickness="0" Content="Log In" UseLayoutRounding="True" HorizontalAlignment="Center" Height="63"  VerticalAlignment="Top" Width="121" Background="#66FFFFFF"  Click="btnLogin_Click" />
+        <TextBlock x:Name="invalidCredintials" Margin="0,300,0,0" Text="Invalid id or password." RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" Foreground="#ffc845" VerticalAlignment="Top" Opacity="0">
+
+        </TextBlock>
+
+
+    </RelativePanel>
+
+
+</Page>
